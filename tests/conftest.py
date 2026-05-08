@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.core.database import Base, get_db
+from app.infrastructure.persistence.database import get_db
 from app.main import app
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
@@ -21,6 +21,7 @@ def override_get_db():
 
 @pytest.fixture(autouse=True)
 def setup_db():
+    from app.infrastructure.persistence.models import Base
     Base.metadata.create_all(bind=engine)
     yield
     Base.metadata.drop_all(bind=engine)

@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:17-alpine
+    image: postgres:17-al
     environment:
       POSTGRES_DB: supermarket
       POSTGRES_USER: root
