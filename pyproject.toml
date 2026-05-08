@@ -1,0 +1,39 @@
+[project]
+name = "supermarket-api"
+version = "0.1.0"
+description = "Supermarket Order & Inventory Management API"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "sqlalchemy>=2.0.35",
+    "psycopg[binary]>=3.2.2",
+    "alembic>=1.13.0",
+    "pydantic-settings>=2.5.0",
+    "email-validator>=2.1.0",
+    "python-dotenv>=1.0.1",
+    "python-jose[cryptography]>=3.3.0",
+    "bcrypt>=4.0.0",
+    "redis>=5.1.0",
+    "celery>=5.4.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "httpx>=0.27.0",
+]
+
+[dependency-groups]
+test = [
+    "httpx>=0.27.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
