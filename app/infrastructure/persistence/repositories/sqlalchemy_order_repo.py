@@ -33,6 +33,7 @@ class SQLAlchemyOrderRepository(OrderRepository):
         )
 
     def create_order(self, order: Order) -> Order:
+        # lo paso a modelo para meterlo en la bbdd
         model = OrderModel(
             user_id=order.user_id,
             status=order.status.value,

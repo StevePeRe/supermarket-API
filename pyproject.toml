@@ -27,6 +27,10 @@ test = [
 ]
 
 [dependency-groups]
+dev = [
+    "alembic>=1.18.4",
+    "pytest-cov>=7.1.0",
+]
 test = [
     "httpx>=0.27.0",
     "pytest>=8.0.0",
@@ -37,3 +41,22 @@ test = [
 testpaths = ["tests"]
 pythonpath = ["."]
 asyncio_mode = "auto"
+
+[tool.coverage.run]
+source = ["app"]
+omit = [
+    "*/tests/*",
+    "*/__init__.py",
+    "*/conftest.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+fail_under = 50
+show_missing = true

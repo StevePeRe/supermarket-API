@@ -5,7 +5,7 @@ from typing import AsyncGenerator
 from fastapi import FastAPI
 
 from app.infrastructure.config.settings import get_settings
-from app.infrastructure.persistence.database import verify_database_connection, create_tables
+from app.infrastructure.persistence.database import verify_database_connection
 from app.infrastructure.api.routes import auth, products, orders, inventory, reports
 
 logger = logging.getLogger(__name__)
@@ -15,8 +15,6 @@ logger = logging.getLogger(__name__)
 async def lifespan(_: FastAPI) -> AsyncGenerator[None, None]:
     verify_database_connection()
     logger.info("Database connection OK")
-    create_tables()
-    logger.info("Tables created")
     yield
 
 
